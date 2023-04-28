@@ -2,7 +2,7 @@
 *
 * Name: James Douglas
 * Date: 4/28/2023
-* Description: 
+* Description: Main class!
 * Bugs: (if none write none known)
 * Reflection: How did you find this lab? Too easy? Too hard? 
 *
