@@ -8,6 +8,11 @@ public class CoolCollection<E> {
     
   }
 
+  // Add an element to the collection
+  public boolean add(E element) {
+    return pieces.add(element);
+  }
+
 
   
 }
