@@ -41,6 +41,21 @@ public class CoolCollection<E> {
     return pieces.size();
   }
 
+  // Inner classes
+  public class RandomIterator extends Iterator<E> {
+    public RandomIterator(int seed) {
+      
+    }
+
+    public E next() {
+      
+    }
+
+    public boolean hasNext() {
+      
+    }
+  }
+
 
   
 }
