@@ -20,6 +20,11 @@ public class CoolCollection<E> {
     pieces.add(pos, element);
   }
 
+  // Removes an element from the collection
+  public void remove(E element) {
+    pieces.remove(element);
+  }
+
 
   
 }
