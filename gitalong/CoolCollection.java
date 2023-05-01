@@ -51,19 +51,24 @@ public class CoolCollection<E> {
       rand.setSeed(seed);
     }
 
+    // Returns the next element.
     public E next() {
+      
+      // Generates a random integer
       int currentInt = rand.nextInt(pieces.size() - 1);
 
-      // Generates a new random integer if said integer has been used before
+      // Generates a new random integer if last integer has been used before
       while (generatedInts.contains(currentInt)) {
         currentInt = rand.nextInt(pieces.size() - 1);
       }
-      generatedInts.add(currentInt); // Add to generated list
-      
+      generatedInts.add(currentInt); // Add integer to generated list
+
+      // Return the item
       E item = pieces.get(currentInt);
       return item;
     }
 
+    // Returns true if another element can be returned, else false.
     public boolean hasNext() {
       return generatedInts.size() < pieces.size();
     }
