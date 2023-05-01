@@ -9,6 +9,7 @@ public class CoolCollection<E> {
 
   public CoolCollection(boolean iterateRandomly) {
     this.iterateRandomly = iterateRandomly;
+    pieces = new ArrayList<E>();
   }
 
   // Add an element to the collection
@@ -35,7 +36,7 @@ public class CoolCollection<E> {
   // IterateRandomly
   public Iterator<E> iterator() {
     if (iterateRandomly) {
-      RandomIterator itr = new RandomIterator(12345);
+      RandomIterator itr = new RandomIterator(1234567);
       return itr;
     } else {
       WellBehavedIterator itr = new WellBehavedIterator();
@@ -61,20 +62,23 @@ public class CoolCollection<E> {
     public E next() {
       
       // Generates a random integer
-      int currentInt = rand.nextInt(pieces.size() - 1);
+      int currentInt = rand.nextInt(pieces.size());
 
       // Generates a new random integer if last integer has been used before
       while (generatedInts.contains(currentInt)) {
-        currentInt = rand.nextInt(pieces.size() - 1);
+        currentInt = rand.nextInt(pieces.size());
       }
-      generatedInts.add(currentInt); // Add integer to generated list
-
+      
+      generatedInts.add(currentInt);
+      
       // Return the item
       return pieces.get(currentInt);
     }
 
     // Returns true if another element can be returned, else false.
     public boolean hasNext() {
+      //System.out.printf("Generated: %d\n", generatedInts.size());
+      //System.out.printf("Pieces: %d\n", pieces.size());
       return generatedInts.size() < pieces.size();
     }
 
@@ -97,7 +101,7 @@ public class CoolCollection<E> {
     }
 
     public boolean hasNext() {
-      return nextIndex >= pieces.size();
+      return nextIndex < pieces.size();
     }
     
   }

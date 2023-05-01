@@ -1,3 +1,5 @@
+import gitalong.*;
+import java.util.*;
 /**
 *
 * Name: James Douglas
@@ -10,6 +12,20 @@
 
 class Main {
   public static void main(String[] args) {
-    System.out.println("Hello world!");
+    CoolCollection<String> stringCollection = new CoolCollection<String>(true);
+    stringCollection.add("never");
+    stringCollection.add("trust");
+    stringCollection.add("an");
+    stringCollection.add("atom");
+    stringCollection.add("they");
+    stringCollection.add("make");
+    stringCollection.add("up");
+    stringCollection.add("everything");
+
+    Iterator<String> itr = stringCollection.iterator();
+
+    while (itr.hasNext()) {
+      System.out.printf("%s ", itr.next());
+    }
   }
 }
