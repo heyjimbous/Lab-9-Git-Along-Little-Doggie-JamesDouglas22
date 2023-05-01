@@ -36,6 +36,11 @@ public class CoolCollection<E> {
     
   }
 
+  // Returns the size of the collection
+  public int size() {
+    return pieces.size();
+  }
+
 
   
 }
