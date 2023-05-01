@@ -25,6 +25,11 @@ public class CoolCollection<E> {
     pieces.remove(element);
   }
 
+  // Remove element from collection at a specified index
+  public E remove(int pos) {
+    pieces.remove(pos);
+  }
+
 
   
 }
