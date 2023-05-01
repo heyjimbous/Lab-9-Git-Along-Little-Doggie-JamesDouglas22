@@ -64,8 +64,7 @@ public class CoolCollection<E> {
       generatedInts.add(currentInt); // Add integer to generated list
 
       // Return the item
-      E item = pieces.get(currentInt);
-      return item;
+      return pieces.get(currentInt);
     }
 
     // Returns true if another element can be returned, else false.
@@ -73,9 +72,29 @@ public class CoolCollection<E> {
       return generatedInts.size() < pieces.size();
     }
 
-    
   }
 
+  // An iterator that visits elements in order.
+  public class WellBehavedIterator implements Iterator<E> {
+    
+    // Keeps track of the next index
+    int nextIndex;
+    
+    public WellBehavedIterator() {
+      lastIndex = 0;
+    }
+
+    public E next() {
+      E item = pieces.get(lastIndex);
+      nextIndex++;
+      return item;
+    }
+
+    public boolean hasNext() {
+      return nextIndex >= pieces.size();
+    }
+    
+  }
 
   
 }
