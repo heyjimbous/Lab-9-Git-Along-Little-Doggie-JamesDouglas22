@@ -7,7 +7,7 @@ public class CoolCollection<E> {
   private boolean iterateRandomly;
 
   public CoolCollection(boolean iterateRandomly) {
-    
+    this.iterateRandomly = iterateRandomly;
   }
 
   // Add an element to the collection
@@ -28,6 +28,12 @@ public class CoolCollection<E> {
   // Remove element from collection at a specified index
   public E remove(int pos) {
     pieces.remove(pos);
+  }
+
+  // Returns Random or WellBehavedIterator, depending on
+  // IterateRandomly
+  public Iterator<E> iterator() {
+    
   }
 
 
