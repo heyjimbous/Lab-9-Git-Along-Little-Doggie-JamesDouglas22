@@ -1,6 +1,7 @@
 package gitalong;
 
 import java.util.ArrayList;
+import java.util.*;
 
 public class CoolCollection<E> {
   private ArrayList<E> pieces;
@@ -33,7 +34,7 @@ public class CoolCollection<E> {
   // Returns Random or WellBehavedIterator, depending on
   // IterateRandomly
   public Iterator<E> iterator() {
-    
+
   }
 
   // Returns the size of the collection
@@ -42,18 +43,32 @@ public class CoolCollection<E> {
   }
 
   // Inner classes
-  public class RandomIterator extends Iterator<E> {
+  public class RandomIterator implements Iterator<E> {
+    Random rand = new Random();
+    ArrayList<Integer> generatedInts = new ArrayList<Integer>();
+
     public RandomIterator(int seed) {
-      
+      rand.setSeed(seed);
     }
 
     public E next() {
+      int currentInt = rand.nextInt(pieces.size() - 1);
+
+      // Generates a new random integer if said integer has been used before
+      while (generatedInts.contains(currentInt)) {
+        currentInt = rand.nextInt(pieces.size() - 1);
+      }
+      generatedInts.add(currentInt); // Add to generated list
       
+      E item = pieces.get(currentInt);
+      return item;
     }
 
     public boolean hasNext() {
-      
+      return generatedInts.size() < pieces.size();
     }
+
+    
   }
 
 
