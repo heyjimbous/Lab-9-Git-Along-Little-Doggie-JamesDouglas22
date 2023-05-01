@@ -28,13 +28,19 @@ public class CoolCollection<E> {
 
   // Remove element from collection at a specified index
   public E remove(int pos) {
-    pieces.remove(pos);
+    return pieces.remove(pos);
   }
 
   // Returns Random or WellBehavedIterator, depending on
   // IterateRandomly
   public Iterator<E> iterator() {
-
+    if (iterateRandomly) {
+      RandomIterator itr = new RandomIterator(12345);
+      return itr;
+    } else {
+      WellBehavedIterator itr = new WellBehavedIterator();
+      return itr;
+    }
   }
 
   // Returns the size of the collection
@@ -81,11 +87,11 @@ public class CoolCollection<E> {
     int nextIndex;
     
     public WellBehavedIterator() {
-      lastIndex = 0;
+      nextIndex = 0;
     }
 
     public E next() {
-      E item = pieces.get(lastIndex);
+      E item = pieces.get(nextIndex);
       nextIndex++;
       return item;
     }
