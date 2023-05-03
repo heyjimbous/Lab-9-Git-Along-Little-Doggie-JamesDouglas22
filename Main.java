@@ -13,13 +13,13 @@ import java.util.*;
 class Main {
   public static void main(String[] args) {
 
-    final String phrase = "never trust an atom they make up everything";
+    final String phrase = "never trust an atom, they make up everything";
     
     // Test the random iterator
     testIterator(true, phrase, "Random");
 
     // Test the well behaved iterator
-    testIterator(false, phrase, "Well Behaved");
+    //testIterator(false, phrase, "Well Behaved");
 
   }
 
@@ -51,17 +51,10 @@ class Main {
     System.out.printf("\n%s: ", title);
 
     // Loop through collection, print out words
-    int i = 0;
     while (itr.hasNext()) {
-      System.out.printf("%s", itr.next());
-      // Determines if just a space or a comma and a space is needed
-      if (i != 3) {
-        System.out.printf(" ");
-      } else {
-        System.out.printf(", ");
-      }
-      i++;
+      System.out.printf("%s ", itr.next());
     }
+    System.out.printf("%s ", itr.next());
     System.out.printf("\n");
     
   }

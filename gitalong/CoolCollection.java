@@ -57,14 +57,19 @@ public class CoolCollection<E> {
     }
 
     // Returns the next element.
+    // Return null or throw an exception
     public E next() {
       
       // Generates a random integer
       int currentInt = rand.nextInt(pieces.size());
 
       // Generates a new random integer if last integer has been used before
-      while (generatedInts.contains(currentInt)) {
-        currentInt = rand.nextInt(pieces.size());
+      if (hasNext()) {
+        while (generatedInts.contains(currentInt)) {
+          currentInt = rand.nextInt(pieces.size());
+        }
+      } else {
+        return null;
       }
 
       // Add record of int
@@ -85,23 +90,27 @@ public class CoolCollection<E> {
   public class WellBehavedIterator implements Iterator<E> {
     
     // Keeps track of the next index
-    int nextIndex;
+    int cursor;
 
-    // Sets nextIndex to 0 to start
+    // Sets cursor to 0 to start
     public WellBehavedIterator() {
-      nextIndex = 0;
+      cursor = 0;
     }
 
-    // Gets the item at nextIndex, increments nextIndex
+    // Gets the item at cursor, increments cursor
     public E next() {
-      E item = pieces.get(nextIndex);
-      nextIndex++;
-      return item;
+      try {
+        E item = pieces.get(cursor);
+        cursor++;
+        return item;
+      } catch (IndexOutOfBoundsException ioobe) {
+        return null;
+      }
     }
 
-    // Checks if the nextIndex exists
+    // Checks if the cursor exists
     public boolean hasNext() {
-      return nextIndex < pieces.size();
+      return cursor < pieces.size();
     }
     
   }
