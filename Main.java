@@ -12,20 +12,57 @@ import java.util.*;
 
 class Main {
   public static void main(String[] args) {
-    CoolCollection<String> stringCollection = new CoolCollection<String>(true);
-    stringCollection.add("never");
-    stringCollection.add("trust");
-    stringCollection.add("an");
-    stringCollection.add("atom");
-    stringCollection.add("they");
-    stringCollection.add("make");
-    stringCollection.add("up");
-    stringCollection.add("everything");
 
+    final String phrase = "never trust an atom they make up everything";
+    
+    // Test the random iterator
+    testIterator(true, phrase, "Random");
+
+    // Test the well behaved iterator
+    testIterator(false, phrase, "Well Behaved");
+
+  }
+
+  // Tests an iterator on a CoolCollection of Strings.
+  public static void testIterator(boolean random, String phrase, String title) {
+    
+    // Create a CoolCollection, adds words from phrase
+    CoolCollection<String> stringCollection = new CoolCollection<String>(random);
+    addPhrase(phrase, stringCollection);
+
+    // Create an iterator, print words using iterator
     Iterator<String> itr = stringCollection.iterator();
+    printUsingIterator(title, itr);
+    
+  }
 
-    while (itr.hasNext()) {
-      System.out.printf("%s ", itr.next());
+  // Splits a phrase into words, then adds them to a collection.
+  public static void addPhrase(String phrase, CoolCollection col) {
+    String[] splitPhrase = phrase.split(" ");
+    for (int i = 0; i < splitPhrase.length; i++) {
+      col.add(splitPhrase[i]);
     }
+  }
+
+  // Prints words in a manner that matches the sample output.
+  public static void printUsingIterator(String title, Iterator itr) {
+    
+    // Add title
+    System.out.printf("\n%s: ", title);
+
+    // Loop through collection, print out words
+    int i = 0;
+    while (itr.hasNext()) {
+      System.out.printf("%s", itr.next());
+      // Determines if just a space or a comma and a space is needed
+      if (i != 3) {
+        System.out.printf(" ");
+      } else {
+        System.out.printf(", ");
+      }
+      i++;
+    }
+    System.out.printf("\n");
+    
   }
 }

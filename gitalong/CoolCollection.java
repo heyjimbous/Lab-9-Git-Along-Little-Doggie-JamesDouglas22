@@ -67,7 +67,7 @@ public class CoolCollection<E> {
         currentInt = rand.nextInt(pieces.size());
       }
 
-      // 
+      // Add record of int
       generatedInts.add(currentInt);
       
       // Return the item
@@ -86,17 +86,20 @@ public class CoolCollection<E> {
     
     // Keeps track of the next index
     int nextIndex;
-    
+
+    // Sets nextIndex to 0 to start
     public WellBehavedIterator() {
       nextIndex = 0;
     }
 
+    // Gets the item at nextIndex, increments nextIndex
     public E next() {
       E item = pieces.get(nextIndex);
       nextIndex++;
       return item;
     }
 
+    // Checks if the nextIndex exists
     public boolean hasNext() {
       return nextIndex < pieces.size();
     }
