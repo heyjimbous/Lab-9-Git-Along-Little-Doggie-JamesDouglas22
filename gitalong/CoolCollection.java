@@ -36,11 +36,9 @@ public class CoolCollection<E> {
   // IterateRandomly
   public Iterator<E> iterator() {
     if (iterateRandomly) {
-      RandomIterator itr = new RandomIterator(1234567);
-      return itr;
+      return new RandomIterator(1234567);
     } else {
-      WellBehavedIterator itr = new WellBehavedIterator();
-      return itr;
+      return new WellBehavedIterator();
     }
   }
 
@@ -68,7 +66,8 @@ public class CoolCollection<E> {
       while (generatedInts.contains(currentInt)) {
         currentInt = rand.nextInt(pieces.size());
       }
-      
+
+      // 
       generatedInts.add(currentInt);
       
       // Return the item
@@ -77,8 +76,6 @@ public class CoolCollection<E> {
 
     // Returns true if another element can be returned, else false.
     public boolean hasNext() {
-      //System.out.printf("Generated: %d\n", generatedInts.size());
-      //System.out.printf("Pieces: %d\n", pieces.size());
       return generatedInts.size() < pieces.size();
     }
 
