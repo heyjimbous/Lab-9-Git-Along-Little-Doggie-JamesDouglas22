@@ -2,14 +2,15 @@ import gitalong.*;
 import java.util.*;
 
 /**
-*
 * Name: James Douglas
-* Date: 4/28/2023
+* Date: 5/3/2023
 * Description: Main class; tests the CoolCollection wrapper class and the iterators within it.
 * Bugs: None known.
 * Reflection: I found this lab to quite easy. I did have minor issues creating the inner
 * classes, but my problems were resolved after a brief review of Generics.
 *
+* Main was easy to construct. I may have overcomplicated things slightly with the convenience methods I
+* created, but I prefer there to be as little code as possible in the main method.
 */
 
 class Main {
@@ -22,6 +23,8 @@ class Main {
 
     // Test the well behaved iterator
     testIterator(false, phrase, "Well Behaved");
+
+    System.out.printf("\n");
 
   }
 
